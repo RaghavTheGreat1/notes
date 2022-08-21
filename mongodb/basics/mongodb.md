@@ -1,9 +1,9 @@
-#MongoDB Basics
+# MongoDB Basics
 
-###Database
+### Database
 Structered way to store data
 
-##MongoDB
+## MongoDB
 MongoDB is NoSQL Database. NoSQL means data is not stored in tables, i.e. in rows and columns.
 
 MongoDB stores data in form of Documents. These Documents are then stored in collections of documents.
@@ -19,7 +19,7 @@ There can be many collections per database and many documents per collection.
 
 ![image](https://user-images.githubusercontent.com/28825619/185802380-37953a35-c657-4bef-abaa-18d9a593bda6.png)
 
-##MongoDB Atlas
+## MongoDB Atlas
 DaaS - Database as a service
 
 Cluster - group of servers that store your data.
