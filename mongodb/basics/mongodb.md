@@ -1,6 +1,6 @@
 # MongoDB Basics
 
-### Database
+## Database
 Structered way to store data
 
 ## MongoDB
