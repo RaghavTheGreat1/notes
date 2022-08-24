@@ -278,4 +278,4 @@ db.collection_name.drop()
 db.inspection.drop()
 ```
 
-
+Note: Removing all collections in a database also removes the database.
