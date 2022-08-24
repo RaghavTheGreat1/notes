@@ -79,43 +79,6 @@ use <db_name>
 show collections
 ```
 
-### Query Data 
-
-To query data, we use ```.find()``` method.
-
-```js
-db.collection_name.find()
-```
-
-Inside ```()``` of ```find()``` method, we write JSON to query our data.
-
-```js
-db.zips.find({"state": "NY"})
-db.zips.find({"state": "NY", "city": "ALBANY"})
-db.zips.find({"state": "NY", "city": "ALBANY"}).pretty()
-```
-
-```.pretty()``` returns data in formatted way.
-
-
-#### Count Documents
-
-We use ```.count()``` method to count number of documents.
-
-```js
-db.zips.find({"state": "NY"}).count()
-```
-
-#### ```it```
-
-Whenever we use ```.find()```, MongoDB displays a specific number of data only. To see more data, we use ```it``` command.
-```it``` stands for iterate. This lets you to iterate your cursor to next sets of data.
-
-**Cursor**
-```.find()``` command returns an object called cursor. Cursor is a pointer to a result set of a query.
-A ```pointer``` is also an object returned by ```cursor``` which directs the address of the memory location.
-
-
 ## CRUD
 
 **_id**
@@ -130,7 +93,7 @@ More about Object ID: https://www.mongodb.com/docs/manual/reference/method/Objec
 
 ### Create
 
--Make sure the documents you're about to create/insert must have a unique _id.
+- Make sure the documents you're about to create/insert must have a unique _id.
 
 #### Single Document
 
@@ -191,6 +154,44 @@ db.inspections.insert([{ "_id": 1, "test": 1 },{ "_id": 1, "test": 2 },
 
 ---
 
+### Read 
+
+To query data, we use ```.find()``` method.
+
+```js
+db.collection_name.find()
+```
+
+Inside ```()``` of ```find()``` method, we write JSON to query our data.
+
+```js
+db.zips.find({"state": "NY"})
+db.zips.find({"state": "NY", "city": "ALBANY"})
+db.zips.find({"state": "NY", "city": "ALBANY"}).pretty()
+```
+
+```.pretty()``` returns data in formatted way.
+
+
+#### Count Documents
+
+We use ```.count()``` method to count number of documents.
+
+```js
+db.zips.find({"state": "NY"}).count()
+```
+
+#### ```it```
+
+Whenever we use ```.find()```, MongoDB displays a specific number of data only. To see more data, we use ```it``` command.
+```it``` stands for iterate. This lets you to iterate your cursor to next sets of data.
+
+**Cursor**
+```.find()``` command returns an object called cursor. Cursor is a pointer to a result set of a query.
+A ```pointer``` is also an object returned by ```cursor``` which directs the address of the memory location.
+
+---
+
 ### Update
 
 #### Update One
@@ -215,7 +216,6 @@ db.grades.updateOne({ "student_id": 250, "class_id": 339 },
                      })
 ```
 
-
 #### Update Many
 
 ```js
@@ -229,11 +229,11 @@ db.collection_name.updateOne(query, {update_operator: document})
 db.zips.updateMany({ "city": "HUDSON" }, { "$inc": { "pop": 10 } })
 ```
 
-
 #### Update Operators
 
 ![image](https://user-images.githubusercontent.com/28825619/186328480-399aabb9-4aeb-4af2-9cbf-b2cdb30032a8.png)
 
+---
 
 ### Delete
 
