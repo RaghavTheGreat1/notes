@@ -234,3 +234,48 @@ db.zips.updateMany({ "city": "HUDSON" }, { "$inc": { "pop": 10 } })
 
 ![image](https://user-images.githubusercontent.com/28825619/186328480-399aabb9-4aeb-4af2-9cbf-b2cdb30032a8.png)
 
+
+### Delete
+
+#### Delete One
+
+Deletes one of the document that matches the query.
+
+```js
+db.collection_name.deleteOne(query)
+```
+
+##### Example
+
+```js
+db.inspections.deleteOne({ "test": 3 })
+```
+
+
+#### Delete Many
+
+Deletes all the documents that matches the query.
+
+```js
+db.collection_name.deleteMany(query)
+```
+
+##### Example
+
+```js
+db.inspections.deleteMany({ "test": 1 })
+```
+
+#### Delete Collection
+
+```js
+db.collection_name.drop()
+```
+
+##### Example
+
+```js
+db.inspection.drop()
+```
+
+
