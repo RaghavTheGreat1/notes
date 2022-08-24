@@ -180,7 +180,7 @@ db.inspections.insert([{ "_id": 1, "test": 1 },{ "_id": 1, "test": 2 },
                        { "_id": 3, "test": 3 }])
 ```
 
-In tha above code, 2 documents have same value for ```_id```` field. MongoDB has a rule to iterate and insert documents in the given order form. So first it iterates through index 0 and inserts that document. In the next iteration, it finds the duplicate key error and hence it stops the iteration. So even though the next document has a unique ```_id```, it does not gets inserted becaused the iteration has been terminated. 
+In tha above code, 2 documents have same value for ```_id``` field. MongoDB has a rule to iterate and insert documents in the given order form. So first it iterates through index 0 and inserts that document. In the next iteration, it finds the duplicate key error and hence it stops the iteration. So even though the next document has a unique ```_id```, it does not gets inserted becaused the iteration has been terminated. 
 
 To fix this; we use ```{"ordered": false}``` in ```.insert()``` which adds all the documents with unique ids and then throws the error for non-unique documents.
 
