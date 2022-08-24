@@ -189,4 +189,48 @@ db.inspections.insert([{ "_id": 1, "test": 1 },{ "_id": 1, "test": 2 },
                        { "_id": 3, "test": 3 }],{ "ordered": false })
 ```
 
+---
+
+### Update
+
+#### Update One
+
+```js
+db.collection_name.updateOne(query, {update_operator: document})
+```
+
+##### Examples
+
+```js
+
+db.zips.updateOne({ "zip": "12534" }, { "$set": { "pop": 17630 } })
+```
+
+```js
+
+db.grades.updateOne({ "student_id": 250, "class_id": 339 },
+                    { "$push": { "scores": { "type": "extra credit",
+                                             "score": 100 }
+                                }
+                     })
+```
+
+
+#### Update Many
+
+```js
+db.collection_name.updateOne(query, {update_operator: document})
+```
+
+##### Example
+
+```js
+
+db.zips.updateMany({ "city": "HUDSON" }, { "$inc": { "pop": 10 } })
+```
+
+
+#### Update Operators
+
+![image](https://user-images.githubusercontent.com/28825619/186328480-399aabb9-4aeb-4af2-9cbf-b2cdb30032a8.png)
 
