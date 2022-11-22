@@ -42,7 +42,7 @@ class Student{
 
 ```c
 struct Student{
-  String name;
+  char name[];
   int rollNumber;
   int phoneNumber;
 };
