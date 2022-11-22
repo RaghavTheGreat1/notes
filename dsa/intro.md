@@ -39,3 +39,12 @@ class Student{
 ```
 
 
+
+```c
+struct Student{
+  String name;
+  int rollNumber;
+  int phoneNumber;
+};
+```
+
