@@ -108,3 +108,18 @@ Any algorithm that performs permutation on a given data set is an example of O(n
 
 
 Source : https://dev.to/sarah_chima/the-big-o-notation-an-introduction-34f7
+
+---
+
+Common Data Structure Operations
+
+<img width="898" alt="Screenshot 2022-11-30 at 1 18 01 PM" src="https://user-images.githubusercontent.com/28825619/204737618-adfb3e5f-06af-46e8-9a15-1080a47d6a4f.png">
+
+
+Array Sorting Algorithms 
+
+<img width="584" alt="Screenshot 2022-11-30 at 1 19 38 PM" src="https://user-images.githubusercontent.com/28825619/204737887-c221e3b8-1d08-4dde-911d-0eb6f44fa245.png">
+
+
+
+
