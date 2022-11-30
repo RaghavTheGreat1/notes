@@ -63,7 +63,7 @@ Remember that the Big O notation considers the worst-case scenario. In this inst
 O(n^2 ) denotes an algorithm whose runtime is directly proportional to the square of the size of the input data set.
 An example of this is a nested iteration or loop to check if the data set contains duplicates.
 
-```hs
+```js
 function constainsDuplicate(elements) {
   for (let element in elements) {
      for (let item in elements){
@@ -94,11 +94,11 @@ This occurs in algorithms where for each increase in the size of the data set, t
 A common example of this is a recursive solution for finding Fibonacci numbers.
 
 ```js
-      function fibonacci(num) {
-      if (num <= 1) return 1;
+function fibonacci(num) {
+   if (num <= 1) return 1;
 
-      return fibonacci(num - 2) + fibonacci(num - 1)
-   }
+   return fibonacci(num - 2) + fibonacci(num - 1)
+}
 ```   
 
 ### 7 O(n!) - Factorial runtime
