@@ -60,6 +60,7 @@ Two step process:
 
 
 Time Complexity: O(1)
+
 Space Complexity: O(1)
 
 
@@ -110,8 +111,12 @@ Two step process:
     2. Change link of last node from NULL to newNode address
 
 
+<img width="1208" alt="image" src="https://user-images.githubusercontent.com/28825619/212464530-bab64a40-d34d-4806-b693-376a9ec2e224.png">
+
+
 
 Time Complexity: O(n) [Since we have to iterate through SLL to reach end of SLL]
+
 Space Complexity: O(1)
 
 
