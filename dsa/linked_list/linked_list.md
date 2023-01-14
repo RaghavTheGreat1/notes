@@ -55,7 +55,8 @@ Two step process:
     
     2. Update head pointer to the new node
 
-<img width="1255" alt="image" src="https://user-images.githubusercontent.com/28825619/212463418-4b47a148-a9f7-45a1-b9b0-825be3c8954d.png">
+<img width="1255" alt="image" src="https://user-images.githubusercontent.com/28825619/212463672-e2ed2926-1f87-4ef9-9838-891dd85290bd.png">
+
 
 
 
