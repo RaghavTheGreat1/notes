@@ -54,7 +54,9 @@ Two step process:
     1. Update the link of new node to the current head
     2. Update head pointer to the new node
 
-<img width="1254" alt="image" src="https://user-images.githubusercontent.com/28825619/212462197-80f41ffd-c07f-4085-81c0-5683da2f9a86.png">
+<img width="1255" alt="image" src="https://user-images.githubusercontent.com/28825619/212463672-e2ed2926-1f87-4ef9-9838-891dd85290bd.png">
+
+
 
 
 Time Complexity: O(1)
@@ -137,7 +139,7 @@ NODE insertEnd(NODE head, int data){
 
         // here, current node is now at the end of SLL
         currentNode -> link = newNode;
-        
+                
     }
 
     return head;
