@@ -57,6 +57,39 @@ Two step process:
 
 <img width="1254" alt="image" src="https://user-images.githubusercontent.com/28825619/212462197-80f41ffd-c07f-4085-81c0-5683da2f9a86.png">
 
+
+```c
+
+NODE insertFront(NODE head, int data){
+
+    NODE newNode;
+
+    // creates an unnamed node & pointer
+    newNode = (NODE)malloc(sizeof(struct List));
+
+    // assigns the input data to data of newNode 
+        newNode -> data = data;
+
+    if(head == NULL){
+
+        head = newNode;
+        head -> link = NULL;
+
+
+    } else{
+
+        // establishing connection by assinging newNode link to head's address
+        newNode -> link = head;
+
+        // updates the head to the newNOde
+        head = newNode;
+
+    }
+
+    return head;
+}
+```
+
 ### Traversing
 
 - Traverse until we reach the *last node* of SLL
