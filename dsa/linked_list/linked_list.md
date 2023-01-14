@@ -168,6 +168,9 @@ Three step process:
     2. Assign the link of preNode to the newNode link
     3. Update the link of preNode to newNode's address
 
+<img width="1202" alt="image" src="https://user-images.githubusercontent.com/28825619/212468258-97bb985d-7b93-45fa-bac1-2d4c623d606f.png">
+
+
 
 Time Complexity: O(n) [Worst case scenario]
 
