@@ -25,7 +25,9 @@ typedef struct List *NODE;
         c. Position
     - Traversing 
     - Deletion
-    
+        a. Front
+        b. End
+        c. Position    
 
 
 ## Insertion
@@ -242,3 +244,36 @@ int length(NODE head){
 }
 ```
     
+
+## Deletion
+
+### 1. Front Deletion
+
+Current header node gets deleted and the next node to it becomes the new header node
+
+Two step process:
+
+    1. Create temporary node to point the same node as of current header node
+    2. Move the header node pointer to the next node & dispose temporary node
+
+
+Time Complexity: O(1)
+
+Space Complexity: O(1)
+
+
+```c
+
+void deleteFront(NODE head){
+    NODE temp = head;
+
+    if(head == NULL){
+        return;
+    }
+
+    head = head -> link;
+    free(temp);
+
+}
+
+```
