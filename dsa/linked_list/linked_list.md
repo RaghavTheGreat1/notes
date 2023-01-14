@@ -72,6 +72,9 @@ NODE insertFront(NODE head, int data){
 
     if(head == NULL){
 
+        // if head is empty, implies list is empty
+        // so creating new node & assigning to head
+
         head = newNode;
         head -> link = NULL;
 
