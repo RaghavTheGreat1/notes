@@ -48,7 +48,7 @@ Two step process:
     1. Update the link of new node to the current head
     2. Update head pointer to the new node
 
-image.png
+<img width="1254" alt="image" src="https://user-images.githubusercontent.com/28825619/212462197-80f41ffd-c07f-4085-81c0-5683da2f9a86.png">
 
 ### Traversing
 
