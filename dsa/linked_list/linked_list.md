@@ -12,7 +12,7 @@
 
 # Singly Linked Lists
 
-<img width="1016" alt="image" src="https://user-images.githubusercontent.com/28825619/212460469-ae842b64-05cc-4547-a044-86698ee75b2b.png">
+<img width="1010" alt="image" src="https://user-images.githubusercontent.com/28825619/212460591-c67be464-1b88-473a-84d3-8e7017345694.png">
 
 
 - Reference of Last Node of LL contains NULL indicating the end of list, hence this makes it a Singly Linked List
