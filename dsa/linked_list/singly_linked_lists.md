@@ -255,6 +255,10 @@ Two step process:
 
     1. Create temporary node to point the same node as of current header node
     2. Move the header node pointer to the next node & dispose temporary node
+    
+    
+<img width="1108" alt="image" src="https://user-images.githubusercontent.com/28825619/212478358-c216a621-95ef-4f92-9b0b-4b75e4ab2949.png">
+
 
 
 Time Complexity: O(1)
