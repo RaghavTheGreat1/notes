@@ -281,3 +281,46 @@ void deleteFront(NODE head){
 }
 
 ```
+
+
+### 2. End Deletion
+
+Tail node gets deleted and the link of previous node to it becomes the NULL
+
+Two step process:
+
+    1. Create temporary node to point the same node as of current header node
+    2. Move the header node pointer to the next node & dispose temporary node
+
+
+Time Complexity: O(1)
+
+Space Complexity: O(1)
+
+
+```c
+
+void deleteEnd(NODE head){
+    NODE currentNode = head;
+    NODE preEndNode = head;
+
+    if(head == NULL){
+        return;
+    }
+
+    while(currentNode -> link != NULL){
+
+        preEndNode = currentNode;
+
+        currentNode = currentNode -> link;
+
+    }
+
+    preEndNode -> link = NULL;
+
+    free(currentNode);
+
+    return;
+}
+
+```
