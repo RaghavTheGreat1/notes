@@ -34,7 +34,7 @@ typedef struct List *NODE;
     - Insertion
         a. Front
         b. End
-        c. Index
+        c. Position
     - Traversing 
     - Deletion
     
@@ -85,7 +85,7 @@ NODE insertFront(NODE head, int data){
         head -> link = NULL;
 
 
-    } else{
+    }else{
 
         // establishing connection by assinging newNode link to head's address
         newNode -> link = head;
@@ -134,9 +134,11 @@ NODE insertEnd(NODE head, int data){
     newNode -> link = NULL;
 
     if(currentNode == NULL){
+
         // If there's no node, newNode becomes the head node.
         head = newNode;
-    } else{
+
+    }else{
         
         while(currentNode -> link != NULL){
             currentNode = currentNode -> link;
@@ -144,7 +146,7 @@ NODE insertEnd(NODE head, int data){
 
         // here, current node is now at the end of SLL
         currentNode -> link = newNode;
-                
+
     }
 
     return head;
@@ -154,6 +156,67 @@ NODE insertEnd(NODE head, int data){
 
 ```
 
+
+
+#### 3. Position Insertion
+
+Position insertion is adding node to the specified position.
+
+Three step process:
+
+    1. Iterate until iterator reaches the given position 
+    2. Assign the link of preNode to the newNode link
+    3. Update the link of preNode to newNode's address
+
+
+Time Complexity: O(n) [Worst case scenario]
+
+Space Complexity: O(1)
+
+```c
+NODE insertAt(NODE head, int position, int data){
+    // Predecessor Node
+    NODE preNode = head;
+
+    NODE newNode;
+
+    // Creates new node
+    newNode = (NODE)malloc(sizeof(struct List));
+
+    newNode -> data = data;
+    
+
+    if(position <= 1){
+        newNode -> link = head;
+        head = newNode;
+        return head;
+        
+    }
+
+    // --position to iterate through the SLL, as soon as it reaches position, loop terminates.
+    // We also use [preNode -> link != NULL] to check whether position > actual length.
+    // If position > length of SLL, then we would add the node to the last of it.
+    while(--position && preNode -> link != NULL){
+        preNode = preNode -> link;
+    }
+
+
+    if(preNode -> link == NULL){
+        // Insertion at end
+        newNode -> link = NULL;
+        preNode -> link = newNode;
+        
+    }else{
+        // Insertion at random 
+        newNode -> link = preNode -> link;
+        preNode -> link = newNode;
+    }
+
+
+    return head;
+}
+
+```
 
 
 ### Traversing
@@ -178,10 +241,12 @@ typedef struct List *NODE;
 int length(NODE head){
     NODE currentNode = head -> link;
     int count = 0;
+
     while (currentNode != NULL){
         count++;
         currentNode = currentNode -> link;
     }
+
     return count;
 }
 ```
