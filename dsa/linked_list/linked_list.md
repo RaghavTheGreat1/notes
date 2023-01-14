@@ -50,7 +50,9 @@ typedef struct List *NODE;
 Front insertion is when a new node is attached *before* the current head node.
 
 Two step process: 
+
     1. Update the link of new node to the current head
+    
     2. Update head pointer to the new node
 
 <img width="1254" alt="image" src="https://user-images.githubusercontent.com/28825619/212462197-80f41ffd-c07f-4085-81c0-5683da2f9a86.png">
