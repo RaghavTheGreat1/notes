@@ -52,10 +52,13 @@ Front insertion is when a new node is attached *before* the current head node.
 Two step process: 
 
     1. Update the link of new node to the current head
-    
     2. Update head pointer to the new node
 
 <img width="1254" alt="image" src="https://user-images.githubusercontent.com/28825619/212462197-80f41ffd-c07f-4085-81c0-5683da2f9a86.png">
+
+
+Time Complexity: O(1)
+Space Complexity: O(1)
 
 
 ```c
@@ -92,6 +95,59 @@ NODE insertFront(NODE head, int data){
     return head;
 }
 ```
+
+
+
+#### 2. End Insertion
+
+End insertion is when a new node is attached *after* the last node.
+
+Two step process:
+
+    1. Iterate throught SLL until we reach current last node
+    2. Change link of last node from NULL to newNode address
+
+
+
+Time Complexity: O(n) [Since we have to iterate through SLL to reach end of SLL]
+Space Complexity: O(1)
+
+
+```c
+
+NODE insertEnd(NODE head, int data){
+    NODE currentNode = head;
+
+    NODE newNode;
+
+    // Creates new node
+    newNode = (NODE)malloc(sizeof(struct List));
+
+    newNode -> data = data;
+    newNode -> link = NULL;
+
+    if(currentNode == NULL){
+        // If there's no node, newNode becomes the head node.
+        head = newNode;
+    } else{
+        
+        while(currentNode -> link != NULL){
+            currentNode = currentNode -> link;
+        }
+
+        // here, current node is now at the end of SLL
+        currentNode -> link = newNode;
+        
+    }
+
+    return head;
+
+
+}
+
+```
+
+
 
 ### Traversing
 
