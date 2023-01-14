@@ -37,10 +37,15 @@ typedef struct List *NODE;
         c. Index
     - Traversing 
     - Deletion
+    
+
 
 ### Insertion
 
-#### Front Insertion
+
+
+#### 1. Front Insertion
+
 
 Front insertion is when a new node is attached *before* the current head node.
 
