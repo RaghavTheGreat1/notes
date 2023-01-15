@@ -289,8 +289,8 @@ Tail node gets deleted and the link of previous node to it becomes the NULL
 
 Two step process:
 
-    1. Create temporary node to point the same node as of current header node
-    2. Move the header node pointer to the next node & dispose temporary node
+    1. Iterate until we reach last node, also storing the previous node
+    2. Assign previous node's link to NULL & dispose currentNode
 
     
 <img width="1111" alt="image" src="https://user-images.githubusercontent.com/28825619/212494694-10096fa7-9396-45f8-bd1e-26aea7a540fa.png">
@@ -323,6 +323,62 @@ void deleteEnd(NODE head){
     preEndNode -> link = NULL;
 
     free(currentNode);
+
+    return;
+}
+
+```
+
+
+### 3. Position Deletion
+
+Node present at given position nee
+
+Two step process:
+
+    1. Create temporary node to point the same node as of current header node
+    2. Move the header node pointer to the next node & dispose temporary node
+
+    
+<img width="1111" alt="image" src="https://user-images.githubusercontent.com/28825619/212494694-10096fa7-9396-45f8-bd1e-26aea7a540fa.png">
+
+
+
+Time Complexity: O(n)
+
+Space Complexity: O(1)
+
+
+```c
+
+void deleteAt(NODE head, int position){
+    NODE currentNode = head;
+    NODE preEndNode = head;
+
+    if(head == NULL){
+        printf("List is Empty!");
+        return;
+    }
+
+    if(position <= 1){
+
+        head = head -> link;
+        free(preEndNode);
+        return;
+
+    }else{
+
+        while(--position && currentNode -> link != NULL){
+
+            preEndNode = currentNode;
+
+            currentNode = currentNode -> link;
+
+        }
+
+        preEndNode -> link = currentNode -> link;
+        free(currentNode); 
+    }
 
     return;
 }
