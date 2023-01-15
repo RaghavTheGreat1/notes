@@ -340,8 +340,7 @@ Two step process:
     2. Move the header node pointer to the next node & dispose temporary node
 
     
-<img width="1111" alt="image" src="https://user-images.githubusercontent.com/28825619/212494694-10096fa7-9396-45f8-bd1e-26aea7a540fa.png">
-
+<img width="1055" alt="image" src="https://user-images.githubusercontent.com/28825619/212528704-a9a9a046-f487-46ea-a33a-9de180b4c2c2.png">
 
 
 Time Complexity: O(n)
