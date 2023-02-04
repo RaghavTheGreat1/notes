@@ -52,7 +52,7 @@ Before committing changes, we need to add the files and folders to Staging Area.
 
 **4. Committing Changes**
 
-- **Simple Staging**
+- **Simple Committing**
   
    > $ git commit -m "\<message>"
 
