@@ -50,7 +50,7 @@ git status gives information on the current status of a git repository and its c
 
 Before committing changes, we need to add the files and folders to Staging Area. It's just like adding items into the cart before checkout.
 
-**4. Staging Changes**
+**4. Committing Changes**
 
 - **Simple Staging**
   
