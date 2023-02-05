@@ -33,3 +33,40 @@
 - All leaf node at same level
 
 
+## Structure of Binary Tree
+
+<p align="center">
+<img width="953" alt="image" src="https://user-images.githubusercontent.com/28825619/216806370-5c52ae41-7f9e-4859-a55b-b593dc167951.png">
+</p>
+
+```c
+struct BinaryTreeNode{
+  int data;
+  struct BinaryTreeNode *left;
+  struct BinaryTreeNode *right;
+};
+```
+
+## Operations on Binary Tree
+
+- Insert
+- Delete
+- Search
+- Traverse
+
+## Binary Tree Traversal 
+
+- Visitng each & every nodes of a tree is called tree traversal
+- Each node is processed only once but can be traversed many times
+- There aare 6 possibilities, but technically it's 3.
+
+Three traversal techniques:
+1. Preorder (NLR) - Current NODE -> Left Sub Tree -> Right Sub Tree
+2. Inorder (LNR) - Left Sub Tree -> Current NODE -> Right Sub Tree
+3. Postorder (LRN) - Left Sub Tree -> Right Sub Tree -> Current NODE
+
+All these possibilities are based on direction of traversal and the processing of it.
+
+
+
+
