@@ -1,8 +1,5 @@
-/* Lab4-2:
-Design, develop and implement a menu driven Program in C for the following operations on Binary Search Tree (BST) of integers.
-a) Create a BST of N integers 6,9,5,2,8,15,24,14,7,8,5,2.
-b)Traverse the BST in Inorder, Preorder and Postorder.
-c)Exit.*/
+//In bst all the left tree lements should be less than the root and right tree elements should be greater than the root
+
 
 #include<stdio.h> 
 #include<stdlib.h>
@@ -91,7 +88,7 @@ NODE create(NODE root, int n)
 NODE create_BST(NODE root, int item)
 {
     NODE cur,prev,temp;
-	  MALLOC(temp,sizeof(struct tree),NODE); 
+	  temp=(NODE)malloc(sizeof(NODE); 
           temp->info=item;
 	  temp->left=temp->right=NULL;
 	 
