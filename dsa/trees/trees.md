@@ -3,14 +3,13 @@
 Trees are non linear Data Structures where each node is connected to various nodes & represents heirarchial nature of a structure. 
 In a tree, there's a root node, to it multiple instances can be attached down the tree.
 
-<p align="center">
-<img width="511" alt="image" src="https://user-images.githubusercontent.com/28825619/216803306-ba814f97-31b9-4d50-806e-c39031e88db6.png">
-</p>
+<img width="1155" alt="image" src="https://user-images.githubusercontent.com/28825619/216804847-5358212f-158e-494b-ab39-7f433c577de3.png">
+
 
 ## Tree Terms
 
 
-<img width="1230" alt="image" src="https://user-images.githubusercontent.com/28825619/216803810-3c44e239-5e8a-4527-9a24-45203f2779ad.png">
+<img width="1157" alt="image" src="https://user-images.githubusercontent.com/28825619/216804757-cd773c1e-bf72-41c4-ac62-3b3850591add.png">
 
 
 **Root Node**: 
