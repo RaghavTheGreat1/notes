@@ -24,24 +24,125 @@ func (list *LinkedList) Display() {
 		node = node.Next
 	}
 
-	fmt.Println("")
+	if list.IsEmpty() {
+		fmt.Println("nil")
+	} else {
+		fmt.Println()
+	}
+
+}
+
+func (list *LinkedList) DeleteAll() error {
+	if list.IsEmpty() {
+		return fmt.Errorf("no element found: deletion failed since list is empty")
+	}
+
+	list.Head = nil
+
+	return nil
+}
+
+// DeleteAt deletes element at specified index
+//
+// Throws error if list is empty or index goes beyond range
+//
+//	Index Range: [0, Size)
+//
+// Time Complexity: O(N)
+func (list *LinkedList) DeleteAt(index int) (int, error) {
+	size := list.Size()
+	if index >= size {
+		return 0, fmt.Errorf("index out of range, valid index range: [0, %d)", size)
+	}
+
+	if list.IsEmpty() {
+		return 0, fmt.Errorf("no element found: deletion failed since list is empty")
+	} else {
+		node := list.Head
+		prevNode := list.Head
+		count := index
+
+		for node.Next != nil && count != 0 {
+			prevNode = node
+			node = node.Next
+			count--
+		}
+
+		dataAboutDelete := node.Data
+
+		// Check if only one element is left
+		if prevNode.Next == nil {
+			list.Head = nil
+			return dataAboutDelete, nil
+		} else {
+			prevNode.Next = node.Next
+			return dataAboutDelete, nil
+		}
+	}
+}
+
+// DeleteFront deletes the first element or 0th index element in the list
+//
+// # Throws error if list is empty
+//
+// Time Complexity: O(1)
+func (list *LinkedList) DeleteFront() (int, error) {
+
+	if list.IsEmpty() {
+		return 0, fmt.Errorf("no element found: deletion failed since list is empty")
+	} else {
+		dataAboutDelete := list.Head.Data
+		list.Head = list.Head.Next
+		return dataAboutDelete, nil
+	}
+}
+
+// DeleteRear deletes the last or nth -1 index element in the list
+//
+// # Throws error if list is empty
+//
+// Time Complexity: O(N)
+func (list *LinkedList) DeleteRear() (int, error) {
+	if list.IsEmpty() {
+		return 0, fmt.Errorf("no element found: deletion failed since list is empty")
+	} else {
+		node := list.Head
+
+		prevNode := list.Head
+		for node.Next != nil {
+			prevNode = node
+			node = node.Next
+		}
+
+		dataAboutDelete := node.Data
+
+		// Check if only one element is left
+		if prevNode.Next == nil {
+			list.Head = nil
+			return dataAboutDelete, nil
+		} else {
+			prevNode.Next = nil
+			return dataAboutDelete, nil
+		}
+	}
 }
 
 // GetByIndex gets the element present at the specified index
 //
 // Throws error if the specified index goes beyond the range
-// Index Range: [0, Size)
+//
+//	Index Range: [0, Size)
 //
 // Time Complexity: O(N)
 func (list *LinkedList) GetByIndex(index int) (int, error) {
 	size := list.Size()
 
-	if size == 0 {
+	if list.IsEmpty() {
 		return 0, nil
 	}
 
 	if index >= size {
-		return 0, fmt.Errorf("index out of range, valid index range: 0 - %d", size)
+		return 0, fmt.Errorf("index out of range, valid index range: [0, %d)", size)
 	}
 
 	node := list.Head
@@ -56,8 +157,9 @@ func (list *LinkedList) GetByIndex(index int) (int, error) {
 
 // InsertAt inserts an element into the specified index.
 //
-// Throws error if the specified index goes beyond the range
-// Index Range: [0, Size]
+// # Throws error if the specified index goes beyond the range
+//
+//	Index Range: [0, Size]
 //
 // Time Complexity: O(N)
 func (list *LinkedList) InsertAt(index int, data int) error {
@@ -65,7 +167,7 @@ func (list *LinkedList) InsertAt(index int, data int) error {
 	size := list.Size()
 
 	if index > size {
-		return fmt.Errorf("index out of range, valid index range: 0 - %d", size)
+		return fmt.Errorf("index out of range, valid index range: [0 - %d]", size)
 	}
 
 	newNode := &Node{

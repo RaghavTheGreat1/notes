@@ -9,7 +9,7 @@ func main() {
 func linkedListDemo() {
 	fmt.Println("===== Linked List Demo =====")
 	fmt.Println()
-	
+
 	linkedList := LinkedList{}
 	linkedList.Display()
 	fmt.Println(linkedList.Size())
@@ -38,6 +38,39 @@ func linkedListDemo() {
 	if data, err := linkedList.GetByIndex(8); err == nil {
 		fmt.Println(data)
 	}
+
+	if data, err := linkedList.DeleteFront(); err == nil {
+		fmt.Println("Delete Front: ", data)
+	}
+	if data, err := linkedList.DeleteFront(); err == nil {
+		fmt.Println("Delete Front: ", data)
+	}
+	linkedList.Display()
+
+	if data, err := linkedList.DeleteRear(); err == nil {
+		fmt.Println("Delete Rear: ", data)
+	}
+	if data, err := linkedList.DeleteRear(); err == nil {
+		fmt.Println("Delete Rear: ", data)
+	}
+	linkedList.Display()
+
+	if data, err := linkedList.DeleteAt(4); err == nil {
+		fmt.Println("Delete At index 4: ", data)
+	}
+	if data, err := linkedList.DeleteAt(1); err == nil {
+		fmt.Println("Delete Rear index 1: ", data)
+	}
+	if data, err := linkedList.DeleteAt(1); err == nil {
+		fmt.Println("Delete Rear index 1: ", data)
+	}
+	linkedList.Display()
+
+	if err := linkedList.DeleteAll(); err != nil {
+		fmt.Println("Delete All: ", err)
+	}
+
+	linkedList.Display()
 
 	fmt.Println()
 	fmt.Println("===== ===== ===== ===== =====")
