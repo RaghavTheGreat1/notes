@@ -14,6 +14,8 @@ type LinkedList struct {
 }
 
 // Display prints all the nodes of the list
+//
+// Time Complexity: O(N)
 func (list *LinkedList) Display() {
 	node := list.Head
 
@@ -29,6 +31,8 @@ func (list *LinkedList) Display() {
 //
 // Throws error if the specified index goes beyond the size
 // Index Range: [0, Size]
+//
+// Time Complexity: O(N)
 func (list *LinkedList) InsertAt(index int, data int) error {
 
 	size := list.Size()
@@ -70,6 +74,8 @@ func (list *LinkedList) InsertAt(index int, data int) error {
 }
 
 // InsertFront inserts an element to the first position or 0th index
+//
+// Time Complexity: O(1)
 func (list *LinkedList) InsertFront(data int) {
 	newNode := &Node{
 		Data: data,
@@ -85,6 +91,8 @@ func (list *LinkedList) InsertFront(data int) {
 }
 
 // InsertRear inserts an element to the last position or nth index, where n is the size of the list
+//
+// Time Complexity: O(N)
 func (list *LinkedList) InsertRear(data int) {
 	newNode := &Node{
 		Data: data,
@@ -108,6 +116,8 @@ func (list *LinkedList) InsertRear(data int) {
 }
 
 // IsEmpty checks whether the list is empty or not
+//
+// Time Complexity: O(1)
 func (list *LinkedList) IsEmpty() bool {
 
 	if list.Head == nil {
@@ -118,6 +128,8 @@ func (list *LinkedList) IsEmpty() bool {
 }
 
 // Size returns the number of elements in the list
+//
+// Time Complexity: O(N)
 func (list *LinkedList) Size() int {
 	count := 0
 
