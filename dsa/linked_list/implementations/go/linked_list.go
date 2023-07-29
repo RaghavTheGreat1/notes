@@ -27,9 +27,36 @@ func (list *LinkedList) Display() {
 	fmt.Println("")
 }
 
+// GetByIndex gets the element present at the specified index
+//
+// Throws error if the specified index goes beyond the range
+// Index Range: [0, Size)
+//
+// Time Complexity: O(N)
+func (list *LinkedList) GetByIndex(index int) (int, error) {
+	size := list.Size()
+
+	if size == 0 {
+		return 0, nil
+	}
+
+	if index >= size {
+		return 0, fmt.Errorf("index out of range, valid index range: 0 - %d", size)
+	}
+
+	node := list.Head
+	count := index
+	for node != nil && count != 0 {
+		node = node.Next
+		count--
+	}
+
+	return node.Data, nil
+}
+
 // InsertAt inserts an element into the specified index.
 //
-// Throws error if the specified index goes beyond the size
+// Throws error if the specified index goes beyond the range
 // Index Range: [0, Size]
 //
 // Time Complexity: O(N)

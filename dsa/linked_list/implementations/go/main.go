@@ -9,6 +9,7 @@ func main() {
 func linkedListDemo() {
 	fmt.Println("===== Linked List Demo =====")
 	fmt.Println()
+	
 	linkedList := LinkedList{}
 	linkedList.Display()
 	fmt.Println(linkedList.Size())
@@ -34,6 +35,9 @@ func linkedListDemo() {
 		fmt.Println(err)
 	}
 	linkedList.Display()
+	if data, err := linkedList.GetByIndex(8); err == nil {
+		fmt.Println(data)
+	}
 
 	fmt.Println()
 	fmt.Println("===== ===== ===== ===== =====")
