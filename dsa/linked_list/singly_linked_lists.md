@@ -7,15 +7,15 @@
 Link of Last Node of LL contains NULL indicating the end of list, hence this makes it a Singly Linked List
 
 
-```c
-struct List{
-    int data;
-    // Pointer to next List node
-    struct List *link;
-};
+```go
+type Node struct {
+    Data int
+    Next *Node
+}
 
-// Makes it easy to using pointer of LL
-typedef struct List *NODE;
+type LinkedList struct {
+    Head *Node
+}
 ```
 
 ## Basic Operations on SLL
@@ -54,38 +54,19 @@ Time Complexity: O(1)
 Space Complexity: O(1)
 
 
-```c
-
-NODE insertFront(NODE head, int data){
-
-    NODE newNode;
-
-    // creates an unnamed node & pointer
-    newNode = (NODE)malloc(sizeof(struct List));
-
-    // assigns the input data to data of newNode 
-        newNode -> data = data;
-
-    if(head == NULL){
-
-        // if head is empty, implies list is empty
-        // so creating new node & assigning to head
-
-        head = newNode;
-        head -> link = NULL;
-
-
-    }else{
-
-        // establishing connection by assinging newNode link to head's address
-        newNode -> link = head;
-
-        // updates the head to the newNOde
-        head = newNode;
-
+```go
+func (list *LinkedList) InsertFront(data int) {
+    newNode := &Node{
+        Data: data,
+        Next: nil,
     }
 
-    return head;
+    if list.Head != nil {
+        // connects new node's link to the current head node
+        newNode.Next = list.Head
+    }
+
+    list.Head = newNode
 }
 ```
 
@@ -110,38 +91,28 @@ Time Complexity: O(n) [Since we have to iterate through SLL to reach end of SLL]
 Space Complexity: O(1)
 
 
-```c
+```go
 
-NODE insertEnd(NODE head, int data){
-    NODE currentNode = head;
-
-    NODE newNode;
-
-    // Creates new node
-    newNode = (NODE)malloc(sizeof(struct List));
-
-    newNode -> data = data;
-    newNode -> link = NULL;
-
-    if(currentNode == NULL){
-
-        // If there's no node, newNode becomes the head node.
-        head = newNode;
-
-    }else{
-        
-        while(currentNode -> link != NULL){
-            currentNode = currentNode -> link;
-        }
-
-        // here, current node is now at the end of SLL
-        currentNode -> link = newNode;
-
+func (list *LinkedList) InsertRear(data int) {
+    newNode := &Node{
+        Data: data,
+        Next: nil,
     }
 
-    return head;
+    if list.Head == nil {
+        list.Head = newNode
+    } else {
 
+        lastNode := list.Head
 
+        // to iterate through the last element of the list
+        for lastNode.Next != nil {
+            lastNode = lastNode.Next
+        }
+        // here, we are the end of the list
+
+        lastNode.Next = newNode
+    }
 }
 
 ```
@@ -166,47 +137,45 @@ Time Complexity: O(n) [Worst case scenario]
 
 Space Complexity: O(1)
 
-```c
-NODE insertAt(NODE head, int position, int data){
-    // Predecessor Node
-    NODE preNode = head;
+```go
+func (list *LinkedList) InsertAt(index int, data int) error {
 
-    NODE newNode;
+    size := list.Size()
 
-    // Creates new node
-    newNode = (NODE)malloc(sizeof(struct List));
-
-    newNode -> data = data;
-    
-
-    if(position <= 1){
-        newNode -> link = head;
-        head = newNode;
-        return head;
-        
+    if index > size {
+        return fmt.Errorf("index out of range, valid index range: [0 - %d]", size)
     }
 
-    // --position to iterate through the SLL, as soon as it reaches position, loop terminates.
-    // We also use [preNode -> link != NULL] to check whether position > actual length.
-    // If position > length of SLL, then we would add the node to the last of it.
-    while(--position && preNode -> link != NULL){
-        preNode = preNode -> link;
+    newNode := &Node{
+        Data: data,
+        Next: nil,
     }
 
+    if list.Head == nil {
+        list.Head = newNode
+    } else {
 
-    if(preNode -> link == NULL){
-        // Insertion at end
-        newNode -> link = NULL;
-        preNode -> link = newNode;
-        
-    }else{
-        // Insertion at random 
-        newNode -> link = preNode -> link;
-        preNode -> link = newNode;
+        if index == 0 {
+            list.InsertFront(data)
+
+        } else if index == size {
+            list.InsertRear(data)
+
+        } else {
+            node := list.Head
+            count := index - 1
+
+            for node.Next != nil && count != 0 {
+                node = node.Next
+                count--
+            }
+
+            newNode.Next = node.Next
+            node.Next = newNode
+
+        }
     }
-
-
-    return head;
+    return nil
 }
 
 ```
@@ -221,27 +190,20 @@ NODE insertAt(NODE head, int position, int data){
 - Space Complexity = O(1)
 
 
-```c
-struct List{
-    int data;
-    // Pointer to next List node
-    struct List *link;
-};
+```go
+func (list *LinkedList) Size() int {
+    count := 0
 
-typedef struct List *NODE;
+    node := list.Head
 
-
-int length(NODE head){
-    NODE currentNode = head -> link;
-    int count = 0;
-
-    while (currentNode != NULL){
-        count++;
-        currentNode = currentNode -> link;
+    for node != nil {
+        count++
+        node = node.Next
     }
 
-    return count;
+    return count
 }
+
 ```
     
 
@@ -266,18 +228,16 @@ Time Complexity: O(1)
 Space Complexity: O(1)
 
 
-```c
+```go
+func (list *LinkedList) DeleteFront() (int, error) {
 
-void deleteFront(NODE head){
-    NODE temp = head;
-
-    if(head == NULL){
-        return;
+    if list.IsEmpty() {
+        return 0, fmt.Errorf("no element found: deletion failed since list is empty")
+    } else {
+        dataAboutDelete := list.Head.Data
+        list.Head = list.Head.Next
+        return dataAboutDelete, nil
     }
-
-    head = head -> link;
-    free(temp);
-
 }
 
 ```
@@ -302,29 +262,30 @@ Time Complexity: O(n)
 Space Complexity: O(1)
 
 
-```c
+```go
+func (list *LinkedList) DeleteRear() (int, error) {
+    if list.IsEmpty() {
+        return 0, fmt.Errorf("no element found: deletion failed since list is empty")
+    } else {
+        node := list.Head
 
-void deleteEnd(NODE head){
-    NODE currentNode = head;
-    NODE preEndNode = head;
+        prevNode := list.Head
+        for node.Next != nil {
+            prevNode = node
+            node = node.Next
+        }
 
-    if(head == NULL){
-        return;
+        dataAboutDelete := node.Data
+
+        // Check if only one element is left
+        if prevNode.Next == nil {
+            list.Head = nil
+            return dataAboutDelete, nil
+        } else {
+            prevNode.Next = nil
+            return dataAboutDelete, nil
+        }
     }
-
-    while(currentNode -> link != NULL){
-
-        preEndNode = currentNode;
-
-        currentNode = currentNode -> link;
-
-    }
-
-    preEndNode -> link = NULL;
-
-    free(currentNode);
-
-    return;
 }
 
 ```
@@ -348,38 +309,37 @@ Time Complexity: O(n)
 Space Complexity: O(1)
 
 
-```c
-
-void deleteAt(NODE head, int position){
-    NODE currentNode = head;
-    NODE preEndNode = head;
-
-    if(head == NULL){
-        printf("List is Empty!");
-        return;
+```go
+func (list *LinkedList) DeleteAt(index int) (int, error) {
+    size := list.Size()
+    if index >= size {
+        return 0, fmt.Errorf("index out of range, valid index range: [0, %d)", size)
     }
 
-    if(position <= 1){
+    if list.IsEmpty() {
+        return 0, fmt.Errorf("no element found: deletion failed since list is empty")
+    } else {
+        node := list.Head
+        prevNode := list.Head
+        count := index
 
-        head = head -> link;
-        free(preEndNode);
-        return;
-
-    }else{
-
-        while(--position && currentNode -> link != NULL){
-
-            preEndNode = currentNode;
-
-            currentNode = currentNode -> link;
-
+        for node.Next != nil && count != 0 {
+            prevNode = node
+            node = node.Next
+            count--
         }
 
-        preEndNode -> link = currentNode -> link;
-        free(currentNode); 
-    }
+        dataAboutDelete := node.Data
 
-    return;
+        // Check if only one element is left
+        if prevNode.Next == nil {
+            list.Head = nil
+            return dataAboutDelete, nil
+        } else {
+            prevNode.Next = node.Next
+            return dataAboutDelete, nil
+        }
+    }
 }
 
 ```
